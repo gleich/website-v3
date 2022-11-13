@@ -1,7 +1,9 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-}
+const path = require('path');
 
-module.exports = nextConfig
+/** @type {import('next/dist/next-server/server/config').NextConfig} */
+module.exports = {
+  webpack: (config) => {
+    config.resolve.alias['~'] = path.resolve('./src');
+    return config;
+  },
+};
