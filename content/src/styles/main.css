@@ -7,10 +7,10 @@
 }
 
 /* lightmode colors */
-@media (perfers-color-scheme: light) {
+@media (prefers-color-scheme: light) {
   :root {
     --background: #ffffff;
-    --foreground: rgb(23, 23, 23);
+    --foreground: rgb(0, 0, 0);
     --border: rgb(214, 214, 214);
   }
 }
@@ -22,4 +22,10 @@ body {
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   margin: 0;
   padding: 0;
+}
+
+::selection {
+  background-color: var(--foreground);
+  text-decoration-color: var(--background);
+  color: var(--background);
 }
