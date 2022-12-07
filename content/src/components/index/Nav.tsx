@@ -24,6 +24,7 @@ export const Nav = (): JSX.Element => {
           .nameAndSocials {
             display: flex;
             flex-direction: column;
+            margin-left: 5px;
           }
 
           .socials {
@@ -64,7 +65,6 @@ export const Nav = (): JSX.Element => {
       <div>
         <nav>
           <Logo />
-          <div className="sep" />
           <div className="nameAndSocials">
             <h1>Matt Gleich</h1>
             <div className="socials">

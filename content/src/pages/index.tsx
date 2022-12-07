@@ -8,9 +8,28 @@ const Index: NextPage = () => (
         display: flex;
         padding: 0;
       }
+
+      .nav {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+      }
+
+      .main {
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+      }
     `}</style>
     <main>
-      <Nav />
+      <div className="nav">
+        <Nav />
+      </div>
+      <div className="main">
+        <p>Coding</p>
+      </div>
     </main>
   </>
 )
