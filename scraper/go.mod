@@ -1,3 +1,3 @@
-module github.com/gleich/website
+module github.com/gleich/website/scraper
 
 go 1.19
