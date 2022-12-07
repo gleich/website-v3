@@ -27,9 +27,7 @@ const Index: NextPage = () => (
       <div className="nav">
         <Nav />
       </div>
-      <div className="main">
-        <p>Coding</p>
-      </div>
+      <div className="main"></div>
     </main>
   </>
 )

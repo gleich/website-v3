@@ -29,3 +29,15 @@ body {
   text-decoration-color: var(--background);
   color: var(--background);
 }
+
+/* fonts */
+@font-face {
+  font-family: 'Inter';
+  src: url(/fonts/inter/regular.otf);
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url(/fonts/inter/bold.otf);
+  font-weight: bold;
+}
