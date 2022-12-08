@@ -9,7 +9,9 @@ import (
 
 func handleChallenge(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("content-type", "application/json")
-	data, err := json.Marshal(map[string]string{"hub.challenge": r.URL.Query().Get("hub.challenge")})
+	data, err := json.Marshal(
+		map[string]string{"hub.challenge": r.URL.Query().Get("hub.challenge")},
+	)
 	if err != nil {
 		lumber.Fatal(err, "Failed to marshal strava challenge data")
 	}
