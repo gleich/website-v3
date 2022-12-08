@@ -37,5 +37,11 @@ func handleUpdate(w http.ResponseWriter, r *http.Request) {
 
 	if fmt.Sprint(eventData.SubscriptionID) == config.ENV_CONFIG.StravaSubscriptionID {
 		lumber.Success("Valid event data received")
+		err = RefreshTokenIfNeeded()
+		if err != nil {
+			util.HandleHTTPError(w, err, "Failed to refresh access token")
+		}
+		lumber.Debug("ACCESS_TOKEN:", ACCESS_TOKEN)
+		lumber.Debug("REFRESH_TOKEN:", REFRESH_TOKEN)
 	}
 }

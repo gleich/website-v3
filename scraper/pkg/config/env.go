@@ -9,8 +9,12 @@ import (
 var ENV_CONFIG *ENVConfig
 
 type ENVConfig struct {
-	StravaVerifyToken    string `env:"STRAVA_VERIFY_TOKEN"`
-	StravaSubscriptionID string `env:"STRAVA_SUBSCRIPTION_ID"`
+	StravaVerifyToken         string `env:"STRAVA_VERIFY_TOKEN"`
+	StravaSubscriptionID      string `env:"STRAVA_SUBSCRIPTION_ID"`
+	StravaInitialRefreshToken string `env:"STRAVA_INITIAL_REFRESH_TOKEN"`
+	StravaClientID            string `env:"STRAVA_CLIENT_ID"`
+	StravaClientSecret        string `env:"STRAVA_CLIENT_SECRET"`
+	StravaOAUTHCode           string `env:"STRAVA_OAUTH_CODE"`
 }
 
 func Load() (ENVConfig, error) {

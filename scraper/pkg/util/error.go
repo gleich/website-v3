@@ -1,6 +1,7 @@
 package util
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/gleich/lumber/v2"
@@ -8,5 +9,5 @@ import (
 
 func HandleHTTPError(w http.ResponseWriter, err error, ctx string) {
 	lumber.Error(err, ctx)
-	http.Error(w, err.Error(), http.StatusInternalServerError)
+	http.Error(w, fmt.Sprintf("%s: %s", ctx, err.Error()), http.StatusInternalServerError)
 }
