@@ -8,6 +8,7 @@ import (
 
 	"github.com/gleich/lumber/v2"
 	"github.com/gleich/website/scraper/pkg/config"
+	"github.com/gleich/website/scraper/pkg/util"
 )
 
 type event struct {
@@ -22,16 +23,16 @@ type event struct {
 func handleUpdate(w http.ResponseWriter, r *http.Request) {
 	b, err := io.ReadAll(r.Body)
 	if err != nil {
-		lumber.Fatal(err, "Failed to read body for main strava endpoint")
+		util.HandleHTTPError(w, err, "Failed to read body for main strava endpoint")
 	}
 
-	lumber.Debug("body", string(b))
-	lumber.Debug("headers", r.Header)
+	lumber.Debug("body:", string(b))
+	lumber.Debug("headers:", r.Header)
 
 	var eventData event
 	err = json.Unmarshal(b, &eventData)
 	if err != nil {
-		lumber.Fatal(err, "Failed to parse body for main strava endpoint")
+		util.HandleHTTPError(w, err, "Failed to parse body for main strava endpoint")
 	}
 
 	if fmt.Sprint(eventData.SubscriptionID) == config.ENV_CONFIG.StravaSubscriptionID {

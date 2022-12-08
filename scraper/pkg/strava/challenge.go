@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/gleich/lumber/v2"
+	"github.com/gleich/website/scraper/pkg/util"
 )
 
 func handleChallenge(w http.ResponseWriter, r *http.Request) {
@@ -13,11 +14,11 @@ func handleChallenge(w http.ResponseWriter, r *http.Request) {
 		map[string]string{"hub.challenge": r.URL.Query().Get("hub.challenge")},
 	)
 	if err != nil {
-		lumber.Fatal(err, "Failed to marshal strava challenge data")
+		util.HandleHTTPError(w, err, "Failed to marshal strava challenge data")
 	}
 	_, err = w.Write(data)
 	if err != nil {
-		lumber.Fatal(err, "Failed to write JSON data for strava challenge")
+		util.HandleHTTPError(w, err, "Failed to write JSON data for strava challenge")
 	}
 	lumber.Success("Responded to strava challenge request")
 }
