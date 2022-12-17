@@ -1,2 +1,16 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+	import Map from '$lib/index/map.svelte';
+</script>
+
+<main>
+	<Map />
+</main>
+
+<style>
+	main {
+		background-color: rgb(22, 22, 22);
+		color: white;
+		width: 100vw;
+		height: 100vh;
+	}
+</style>
