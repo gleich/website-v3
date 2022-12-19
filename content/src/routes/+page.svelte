@@ -2,12 +2,17 @@
 	import Nav from '$lib/index/nav/nav.svelte';
 </script>
 
-<main>
-	<Nav />
-</main>
+<div class="root">
+	<main>
+		<nav>
+			<Nav />
+		</nav>
+		<div>welcome to my website :)</div>
+	</main>
+</div>
 
 <style>
-	main {
+	.root {
 		background-color: var(--background);
 		color: var(--foreground);
 		width: 100vw;
@@ -17,6 +22,18 @@
 		justify-content: center;
 		font-family: 'Inter';
 	}
+
+	main {
+		display: flex;
+		flex-direction: column;
+		max-width: 600px;
+	}
+
+	nav {
+		padding-bottom: 10px;
+	}
+
+	/* global styles */
 
 	:global(h1, h2, h3, h4, h4, h5, h6) {
 		margin: 0;
