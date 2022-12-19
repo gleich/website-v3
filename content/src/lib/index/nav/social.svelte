@@ -17,8 +17,7 @@
 
 	@media (prefers-color-scheme: light) {
 		img {
-			filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(82deg) brightness(102%)
-				contrast(104%);
+			filter: invert(5%) sepia(4%) saturate(5432%) hue-rotate(195deg) brightness(96%) contrast(88%);
 		}
 	}
 </style>

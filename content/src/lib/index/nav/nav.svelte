@@ -36,7 +36,7 @@
 		gap: 10px;
 		padding-bottom: 5px;
 		padding-right: 5px;
-		border-bottom: 1px solid white;
+		border-bottom: 1px solid var(--foreground);
 	}
 
 	.right {
@@ -54,7 +54,13 @@
 	.end-lines {
 		font-family: 'Advanced Dot Digital 7';
 		line-height: 5px;
-		text-shadow: 0px 0px 20px white;
+		text-shadow: 0px 0px 20px var(--foreground);
+	}
+
+	@media (prefers-color-scheme: light) {
+		.end-lines {
+			text-shadow: 0px 0px 10px var(--foreground);
+		}
 	}
 
 	@font-face {
