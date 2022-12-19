@@ -15,9 +15,27 @@
 		filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(298deg) brightness(102%) contrast(102%);
 	}
 
+	img:hover {
+		animation: shake 0.1s linear;
+	}
+
 	@media (prefers-color-scheme: light) {
 		img {
 			filter: invert(5%) sepia(4%) saturate(5432%) hue-rotate(195deg) brightness(96%) contrast(88%);
+		}
+	}
+
+	@keyframes shake {
+		0% {
+			rotate: 0deg;
+		}
+
+		50% {
+			rotate: 20deg;
+		}
+
+		100% {
+			rotate: 0deg;
 		}
 	}
 </style>
