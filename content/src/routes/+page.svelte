@@ -1,4 +1,5 @@
 <script>
+	import Card from '$lib/card.svelte';
 	import Nav from '$lib/index/nav/nav.svelte';
 </script>
 
@@ -8,6 +9,8 @@
 			<Nav />
 		</nav>
 		<div>welcome to my website :)</div>
+		<h1>feed</h1>
+		<Card />
 	</main>
 </div>
 
@@ -31,6 +34,10 @@
 
 	nav {
 		padding-bottom: 10px;
+	}
+
+	h1 {
+		padding-top: 10px;
 	}
 
 	/* global styles */
