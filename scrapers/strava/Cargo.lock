@@ -1130,6 +1130,8 @@ dependencies = [
  "dotenv",
  "rocket",
  "serde",
+ "tracing",
+ "tracing-subscriber",
 ]
 
 [[package]]

@@ -7,3 +7,5 @@ edition = "2021"
 dotenv = "0.15.0"
 rocket = { version = "0.5.0-rc.2", features = ["json"] }
 serde = "1.0.151"
+tracing = "0.1.37"
+tracing-subscriber = "0.3.16"
