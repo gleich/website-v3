@@ -5,6 +5,7 @@ use rocket::{self, launch, post, routes, serde::json::Json};
 use tracing::{info, Level};
 use tracing_subscriber::FmtSubscriber;
 
+mod activities;
 mod challenge;
 mod event;
 mod token;
