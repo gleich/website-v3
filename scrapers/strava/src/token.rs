@@ -4,7 +4,7 @@ use std::{
 };
 
 use anyhow::{Context, Result};
-use reqwest::blocking::Client;
+use reqwest::Client;
 use serde::Deserialize;
 
 #[derive(Debug, Deserialize)]
@@ -42,7 +42,7 @@ impl TokenData {
         })
     }
 
-    pub fn fetch_if_needed(&mut self, client: &Client) -> Result<()> {
+    pub async fn fetch_if_needed(&mut self, client: &Client) -> Result<()> {
         let now = SystemTime::now()
             .duration_since(UNIX_EPOCH)
             .context("getting current unix time failed")?
@@ -62,13 +62,21 @@ impl TokenData {
                 ("code", &env::var("OAUTH_CODE").unwrap()),
             ])
             .send()
+            .await
             .context("sending request for new refresh token failed")?
             .json()
+            .await
             .context("reading json failed from request to get refresh token")?;
 
-        env::set_var(ACCESS_TOKEN, resp.access_token);
-        env::set_var(REFRESH_TOKEN, resp.refresh_token);
+        env::set_var(ACCESS_TOKEN, &resp.access_token);
+        env::set_var(REFRESH_TOKEN, &resp.refresh_token);
         env::set_var(REFRESH_TOKEN_EXPIRATION, resp.expires_at.to_string());
+
+        self.access_token = resp.access_token;
+        self.refresh_token = resp.refresh_token;
+        self.expires_at = resp.expires_at;
+
+        dbg!(self);
 
         Ok(())
     }

@@ -14,10 +14,11 @@ pub struct Event {
 }
 
 #[post("/", data = "<event>")]
-pub fn endpoint(event: Json<Event>) {
-    let client = reqwest::blocking::Client::new();
+pub async fn endpoint(event: Json<Event>) {
+    let client = reqwest::Client::new();
     let mut token_data = TokenData::new().expect("getting token data failed");
     token_data
         .fetch_if_needed(&client)
+        .await
         .expect("fetching new token data if needed failed");
 }

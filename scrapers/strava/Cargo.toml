@@ -6,7 +6,7 @@ edition = "2021"
 [dependencies]
 anyhow = "1.0.68"
 dotenv = "0.15.0"
-reqwest = { version = "0.11.13", features = ["blocking", "json"] }
+reqwest = { version = "0.11.13", features = ["json"] }
 rocket = { version = "0.5.0-rc.2", features = ["json"] }
 serde = "1.0.151"
 tracing = "0.1.37"
