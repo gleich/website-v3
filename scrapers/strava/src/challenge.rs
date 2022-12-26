@@ -1,4 +1,11 @@
-use rocket::{serde::Serialize, FromForm};
+use std::env;
+
+use rocket::{
+    get,
+    serde::{json::Json, Serialize},
+    FromForm,
+};
+use tracing::info;
 
 #[derive(Debug, PartialEq, FromForm)]
 pub struct Parameters<'r> {
@@ -9,5 +16,19 @@ pub struct Parameters<'r> {
 
 #[derive(Debug, Serialize)]
 pub struct Response<'r> {
+    #[serde(rename(serialize = "hub.challenge"))]
     pub challenge: &'r str,
+}
+
+#[get("/?<hub>")]
+pub fn endpoint(hub: Parameters) -> Json<Option<Response>> {
+    let verify_token = env::var("VERIFY_TOKEN").unwrap_or(String::new());
+    if hub.verify_token != verify_token {
+        info!("received INVALID verify token of {}", hub.verify_token);
+        return Json(None);
+    }
+    info!("received valid verify token of {}", hub.verify_token);
+    Json(Some(Response {
+        challenge: hub.challenge,
+    }))
 }
