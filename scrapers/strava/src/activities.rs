@@ -1,11 +1,11 @@
 use anyhow::{Context, Result};
 use chrono::{DateTime, Utc};
 use reqwest::Client;
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
 use crate::token::TokenData;
 
-#[derive(Debug, PartialEq, Deserialize)]
+#[derive(Debug, PartialEq, Deserialize, Serialize, Clone)]
 pub struct Activity {
     pub name: String,
     pub sport_type: String,
@@ -29,7 +29,7 @@ pub struct Activity {
     pub pr_count: u32,
 }
 
-#[derive(Debug, PartialEq, Deserialize)]
+#[derive(Debug, PartialEq, Deserialize, Serialize, Clone)]
 pub struct Map {
     pub summary_polyline: String,
 }

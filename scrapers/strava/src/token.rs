@@ -19,18 +19,6 @@ const REFRESH_TOKEN: &str = "REFRESH_TOKEN";
 const REFRESH_TOKEN_EXPIRATION: &str = "REFRESH_TOKEN_EXPIRATION";
 
 impl TokenData {
-    pub fn set_access_token(access_token: String) {
-        env::set_var(ACCESS_TOKEN, access_token);
-    }
-
-    pub fn set_refresh_token(refresh_token: String) {
-        env::set_var(REFRESH_TOKEN, refresh_token);
-    }
-
-    pub fn set_refresh_token_expiration(refresh_token_expiration: String) {
-        env::set_var(REFRESH_TOKEN_EXPIRATION, refresh_token_expiration);
-    }
-
     pub fn new() -> Result<Self> {
         Ok(Self {
             access_token: env::var(ACCESS_TOKEN).context("fetching access token env var failed")?,

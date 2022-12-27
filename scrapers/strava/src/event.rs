@@ -1,7 +1,7 @@
 use rocket::{post, serde::json::Json};
 use serde::Deserialize;
 
-use crate::{activities, token::TokenData};
+use crate::{activities, cache, token::TokenData};
 
 #[derive(Debug, PartialEq, Deserialize)]
 pub struct Event {
@@ -24,7 +24,5 @@ pub async fn endpoint(event: Json<Event>) {
     let recent_activities = activities::fetch_recent(&token_data, &client)
         .await
         .expect("fetching recent activities failed");
-    for activity in recent_activities {
-        println!("{}", activity.name);
-    }
+    cache::update(recent_activities).expect("updating cache failed");
 }

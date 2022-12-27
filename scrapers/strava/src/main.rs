@@ -1,11 +1,10 @@
-use challenge::Parameters;
 use dotenv::dotenv;
-use event::Event;
-use rocket::{self, launch, post, routes, serde::json::Json};
+use rocket::{self, launch, routes};
 use tracing::{info, Level};
 use tracing_subscriber::FmtSubscriber;
 
 mod activities;
+mod cache;
 mod challenge;
 mod event;
 mod token;
@@ -18,5 +17,8 @@ fn rocket() -> _ {
     tracing::subscriber::set_global_default(subscriber).expect("setting default subscriber failed");
     info!("booted");
     dotenv().expect("Failed to load dotenv");
-    rocket::build().mount("/", routes![event::endpoint, challenge::endpoint])
+    rocket::build().mount(
+        "/",
+        routes![event::endpoint, challenge::endpoint, cache::endpoint],
+    )
 }
