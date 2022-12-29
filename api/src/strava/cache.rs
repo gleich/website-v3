@@ -4,7 +4,7 @@ use lazy_static::lazy_static;
 use rocket::get;
 use rocket::serde::json::Json;
 
-use crate::activities::Activity;
+use crate::strava::activities::Activity;
 
 lazy_static! {
     static ref ACTIVITIES: Arc<Mutex<Vec<Activity>>> = Arc::new(Mutex::new(vec![]));

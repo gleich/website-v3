@@ -3,11 +3,7 @@ use rocket::{self, launch, routes};
 use tracing::{info, Level};
 use tracing_subscriber::FmtSubscriber;
 
-mod activities;
-mod cache;
-mod challenge;
-mod event;
-mod token;
+mod strava;
 
 #[launch]
 fn rocket() -> _ {
@@ -18,7 +14,11 @@ fn rocket() -> _ {
     info!("booted");
     dotenv().expect("Failed to load dotenv");
     rocket::build().mount(
-        "/",
-        routes![event::endpoint, challenge::endpoint, cache::endpoint],
+        "/strava",
+        routes![
+            strava::event::endpoint,
+            strava::challenge::endpoint,
+            strava::cache::endpoint
+        ],
     )
 }

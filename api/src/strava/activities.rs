@@ -3,7 +3,7 @@ use chrono::{DateTime, Utc};
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
 
-use crate::token::TokenData;
+use crate::strava::token::TokenData;
 
 #[derive(Debug, PartialEq, Deserialize, Serialize, Clone)]
 pub struct Activity {

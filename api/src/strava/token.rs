@@ -30,7 +30,7 @@ impl TokenData {
         })
     }
 
-    pub async fn fetch_if_needed(&mut self, client: &Client) -> Result<()> {
+    pub async fn fetch_if_expired(&mut self, client: &Client) -> Result<()> {
         let now = SystemTime::now()
             .duration_since(UNIX_EPOCH)
             .context("getting current unix time failed")?
