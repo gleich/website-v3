@@ -1,4 +1,4 @@
-use std::env;
+use std::{collections::HashMap, env};
 
 use rocket::{http::Status, post, serde::json::Json};
 use serde::Deserialize;
@@ -8,11 +8,12 @@ use crate::strava::{activities, cache, token::TokenData};
 #[derive(Debug, PartialEq, Deserialize)]
 pub struct Event {
     pub aspect_type: String,
-    pub event_time: u32,
+    pub event_time: u64,
     pub object_id: u64,
     pub object_type: String,
-    pub owner_id: u32,
-    pub subscription_id: u32,
+    pub owner_id: u64,
+    pub subscription_id: u64,
+    pub updates: HashMap<String, String>,
 }
 
 #[post("/", data = "<event>")]

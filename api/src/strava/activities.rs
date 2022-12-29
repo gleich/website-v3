@@ -20,7 +20,9 @@ pub struct Activity {
     pub average_temp: i32,
     #[serde(default)]
     pub average_cadence: f32,
+    #[serde(default)]
     pub average_watts: f32,
+    #[serde(default)]
     pub device_watts: bool,
     pub average_heartrate: f32,
     pub total_elevation_gain: f32,
