@@ -3,6 +3,7 @@ use rocket::{self, launch, routes};
 use tracing::{info, Level};
 use tracing_subscriber::FmtSubscriber;
 
+mod auth;
 mod strava;
 
 #[launch]
