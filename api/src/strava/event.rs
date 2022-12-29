@@ -1,4 +1,6 @@
-use rocket::{post, serde::json::Json};
+use std::env;
+
+use rocket::{http::Status, post, serde::json::Json};
 use serde::Deserialize;
 
 use crate::strava::{activities, cache, token::TokenData};
@@ -13,8 +15,11 @@ pub struct Event {
     pub subscription_id: u32,
 }
 
-#[post("/event", data = "<event>")]
-pub async fn endpoint(event: Json<Event>) {
+#[post("/", data = "<event>")]
+pub async fn endpoint<'a>(event: Json<Event>) -> Status {
+    if event.subscription_id.to_string() != env::var("STRAVA_SUBSCRIPTION_ID").unwrap() {
+        return Status::Forbidden;
+    }
     let client = reqwest::Client::new();
     let mut token_data = TokenData::new().expect("getting strava token data failed");
     token_data
@@ -25,4 +30,5 @@ pub async fn endpoint(event: Json<Event>) {
         .await
         .expect("fetching strava recent activities failed");
     cache::update(recent_activities).expect("updating strava cache failed");
+    Status::Ok
 }

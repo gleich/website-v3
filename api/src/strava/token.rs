@@ -14,9 +14,9 @@ pub struct TokenData {
     pub expires_at: u32,
 }
 
-const ACCESS_TOKEN: &str = "ACCESS_TOKEN";
-const REFRESH_TOKEN: &str = "REFRESH_TOKEN";
-const REFRESH_TOKEN_EXPIRATION: &str = "REFRESH_TOKEN_EXPIRATION";
+const ACCESS_TOKEN: &str = "STRAVA_ACCESS_TOKEN";
+const REFRESH_TOKEN: &str = "STRAVA_REFRESH_TOKEN";
+const REFRESH_TOKEN_EXPIRATION: &str = "STRAVA_REFRESH_TOKEN_EXPIRATION";
 
 impl TokenData {
     pub fn new() -> Result<Self> {
@@ -43,11 +43,11 @@ impl TokenData {
         let resp: TokenData = client
             .post("https://www.strava.com/oauth/token")
             .query(&[
-                ("client_id", &env::var("CLIENT_ID").unwrap()),
-                ("client_secret", &env::var("CLIENT_SECRET").unwrap()),
+                ("client_id", &env::var("STRAVA_CLIENT_ID").unwrap()),
+                ("client_secret", &env::var("STRAVA_CLIENT_SECRET").unwrap()),
                 ("grant_type", &String::from("refresh_token")),
                 ("refresh_token", &self.refresh_token),
-                ("code", &env::var("OAUTH_CODE").unwrap()),
+                ("code", &env::var("STRAVA_OAUTH_CODE").unwrap()),
             ])
             .send()
             .await
