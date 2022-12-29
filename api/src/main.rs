@@ -1,5 +1,5 @@
 use dotenv::dotenv;
-use rocket::{self, launch, routes};
+use rocket::{self, launch, routes, Config};
 use tracing::{info, Level};
 use tracing_subscriber::FmtSubscriber;
 
@@ -14,7 +14,7 @@ fn rocket() -> _ {
     tracing::subscriber::set_global_default(subscriber).expect("setting default subscriber failed");
     info!("booted");
     dotenv().expect("Failed to load dotenv");
-    rocket::build().mount(
+    rocket::custom(Config::figment().merge(("address", "0.0.0.0"))).mount(
         "/strava",
         routes![
             strava::event::endpoint,
