@@ -1,5 +1,6 @@
 use std::{collections::HashMap, env};
 
+use anyhow::{Context, Result};
 use rocket::{http::Status, post, serde::json::Json};
 use serde::Deserialize;
 
@@ -21,15 +22,20 @@ pub async fn endpoint<'a>(event: Json<Event>) -> Status {
     if event.subscription_id.to_string() != env::var("STRAVA_SUBSCRIPTION_ID").unwrap() {
         return Status::Forbidden;
     }
+    update().await.expect("updating list of activities failed");
+    Status::Ok
+}
+
+pub async fn update() -> Result<()> {
     let client = reqwest::Client::new();
-    let mut token_data = TokenData::new().expect("getting strava token data failed");
+    let mut token_data = TokenData::new().context("getting strava token data failed")?;
     token_data
         .fetch_if_expired(&client)
         .await
-        .expect("fetching new strava token data if expired failed");
+        .context("fetching new strava token data if expired failed")?;
     let recent_activities = activities::fetch_recent(&token_data, &client)
         .await
-        .expect("fetching strava recent activities failed");
+        .context("fetching strava recent activities failed")?;
     cache::update(recent_activities).expect("updating strava cache failed");
-    Status::Ok
+    Ok(())
 }
