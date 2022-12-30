@@ -35,7 +35,11 @@ impl<'r> FromRequest<'r> for Token {
             }
         };
 
-        if !valid_tokens.contains(provided_token) {
+        if !valid_tokens
+            .split(",")
+            .collect::<Vec<&str>>()
+            .contains(&provided_token)
+        {
             return Outcome::Failure((Status::Unauthorized, String::from("Invalid API token.")));
         }
 
