@@ -1,20 +1,42 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import Logo from './logo.svelte';
 	import Social from './social.svelte';
+
+	const subtitles = ['developer', 'photographer', 'cyclist', 'student'];
+	$: subtitleIndex = 0;
+
+	onMount(async () => {
+		const interval = setInterval(() => {
+			if (subtitleIndex + 1 === subtitles.length) {
+				subtitleIndex = 0;
+			} else {
+				subtitleIndex++;
+			}
+		}, 1500);
+
+		return () => {
+			interval;
+		};
+	});
 </script>
 
 <nav>
 	<Logo />
 	<div class="right">
-		<div class="socials">
-			<Social name="Strava" link="https://www.strava.com/athletes/30124266" filename="strava" />
-			<Social name="GitHub" link="https://github.com/gleich" filename="github" />
-			<Social name="Instagram" link="https://www.instagram.com/mattglei.ch/" filename="instagram" />
-			<Social name="Twitter" link="https://twitter.com/matt_gleich" filename="twitter" />
-		</div>
-		<div class="text">
-			<h1>Matt Gleich</h1>
-			<h2 class="end-lines">____________</h2>
+		<h1 class="name">Matt Gleich</h1>
+		<div class="bottom">
+			<div class="socials">
+				<Social name="GitHub" link="https://github.com/gleich" filename="github" />
+				<Social
+					name="Instagram"
+					link="https://www.instagram.com/mattglei.ch/"
+					filename="instagram"
+				/>
+				<Social name="Strava" link="https://www.strava.com/athletes/30124266" filename="strava" />
+				<Social name="Twitter" link="https://twitter.com/matt_gleich" filename="twitter" />
+			</div>
+			<p class="subtitle">{subtitles[subtitleIndex]}</p>
 		</div>
 	</div>
 </nav>
@@ -25,46 +47,44 @@
 		align-items: center;
 	}
 
-	h1 {
-		font-size: 3rem;
+	.name {
+		font-size: 4rem;
+		text-align: left;
+		font-weight: bold;
+		font-style: italic;
 	}
 
 	.socials {
-		margin-bottom: 10px;
 		display: flex;
 		width: min-content;
 		gap: 10px;
-		padding-bottom: 5px;
-		padding-right: 5px;
-		border-bottom: 1px solid var(--foreground);
 	}
 
 	.right {
+		margin-top: 30px;
 		display: flex;
 		flex-direction: column;
-	}
-
-	.text {
-		display: flex;
 		align-items: center;
-		flex-direction: column;
-		justify-content: center;
 	}
 
-	.end-lines {
-		font-family: 'Advanced Dot Digital 7';
-		line-height: 5px;
-		text-shadow: 0px 0px 20px var(--foreground);
+	.bottom {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		padding-top: 10px;
+		padding-right: 5px;
+		border-top: 1px solid var(--foreground);
+		width: 100%;
 	}
 
-	@media (prefers-color-scheme: light) {
-		.end-lines {
-			text-shadow: 0px 0px 10px var(--foreground);
-		}
+	.subtitle {
+		font-family: 'ProFontWindows';
+		font-size: 18px;
+		line-height: 10px;
 	}
 
 	@font-face {
-		font-family: 'Advanced Dot Digital 7';
-		src: url('/fonts/advanced_dot_digital-7.ttf');
+		font-family: 'ProFontWindows';
+		src: url('/fonts/ProFontWindows.ttf');
 	}
 </style>

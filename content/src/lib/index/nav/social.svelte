@@ -4,7 +4,7 @@
 	export let filename: string;
 </script>
 
-<a href={link} target="_blank" rel="noreferrer" alt={name}>
+<a href={link} target="_blank" rel="noreferrer" title={name}>
 	<img src="/icons/{filename}.svg" alt={name} />
 </a>
 
@@ -22,20 +22,6 @@
 	@media (prefers-color-scheme: light) {
 		img {
 			filter: invert(5%) sepia(4%) saturate(5432%) hue-rotate(195deg) brightness(96%) contrast(88%);
-		}
-	}
-
-	@keyframes shake {
-		0% {
-			rotate: 0deg;
-		}
-
-		50% {
-			rotate: 20deg;
-		}
-
-		100% {
-			rotate: 0deg;
 		}
 	}
 </style>

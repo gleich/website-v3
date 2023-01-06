@@ -9,8 +9,6 @@
 			<Nav />
 		</nav>
 		<div>welcome to my website :)</div>
-		<h1>feed</h1>
-		<Card />
 	</main>
 </div>
 
@@ -23,7 +21,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		font-family: 'Inter';
+		font-family: 'Helvetica';
 	}
 
 	main {
@@ -36,18 +34,14 @@
 		padding-bottom: 10px;
 	}
 
-	h1 {
-		padding-top: 10px;
-	}
-
 	/* global styles */
 
-	:global(h1, h2, h3, h4, h4, h5, h6) {
+	:global(p, h1, h2, h3, h4, h4, h5, h6) {
 		margin: 0;
 	}
 
 	:root {
-		--background: rgb(24, 25, 32);
+		--background: rgb(14, 14, 14);
 		--foreground: white;
 		--border: grey;
 		--line-color: #49a4ff;
@@ -56,7 +50,7 @@
 	@media (prefers-color-scheme: light) {
 		:root {
 			--background: white;
-			--foreground: rgb(24, 25, 32);
+			--foreground: rgb(14, 14, 14);
 			--border: rgb(214, 214, 214);
 		}
 	}
