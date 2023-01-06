@@ -8,7 +8,14 @@
 		<nav>
 			<Nav />
 		</nav>
-		<div>welcome to my website :)</div>
+		<div class="welcome">
+			hello and welcome to my website! I'm Matt Gleich, a first year student at RIT (Rochester
+			Institute of Technology) studying CS. Currently looking for a position but I'm always up for
+			meeting new people! Feel free out over email at <a href="email@mattglei.ch" about="_blank"
+				>email@mattglei.ch</a
+			>
+			or on <a href="https://twitter.com/matt_gleich" about="_blank">twitter</a>!
+		</div>
 	</main>
 </div>
 
@@ -34,16 +41,25 @@
 		padding-bottom: 10px;
 	}
 
+	.welcome {
+		padding: 20px;
+		border: 0.5px var(--border) solid;
+	}
+
 	/* global styles */
 
 	:global(p, h1, h2, h3, h4, h4, h5, h6) {
 		margin: 0;
 	}
 
+	:global(a) {
+		color: #49a4ff;
+	}
+
 	:root {
 		--background: rgb(14, 14, 14);
 		--foreground: white;
-		--border: grey;
+		--border: rgb(58, 58, 58);
 		--line-color: #49a4ff;
 	}
 
