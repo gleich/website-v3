@@ -6,7 +6,7 @@
 	const subtitles = ['developer', 'photographer', 'cyclist', 'student'];
 	$: subtitleIndex = 0;
 
-	onMount(async () => {
+	onMount(() => {
 		const interval = setInterval(() => {
 			if (subtitleIndex + 1 === subtitles.length) {
 				subtitleIndex = 0;
@@ -22,7 +22,7 @@
 </script>
 
 <nav>
-	<Logo />
+	<Logo class="logo" />
 	<div class="right">
 		<h1 class="name">Matt Gleich</h1>
 		<div class="bottom">
@@ -61,7 +61,6 @@
 	}
 
 	.right {
-		margin-top: 30px;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -81,6 +80,21 @@
 		font-family: 'ProFontWindows';
 		font-size: 18px;
 		line-height: 10px;
+	}
+
+	:global(.logo) {
+		width: 200px;
+		height: auto;
+	}
+
+	@media (max-width: 578px) {
+		nav {
+			flex-direction: column;
+		}
+
+		:global(.logo) {
+			width: 300px;
+		}
 	}
 
 	@font-face {

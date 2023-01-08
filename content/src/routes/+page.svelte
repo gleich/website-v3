@@ -10,11 +10,11 @@
 		</nav>
 		<div class="welcome">
 			hello and welcome to my website! I'm Matt Gleich, a first year student at RIT (Rochester
-			Institute of Technology) studying CS. Currently looking for a position but I'm always up for
-			meeting new people! Feel free out over email at <a href="email@mattglei.ch" about="_blank"
+			Institute of Technology) studying CS. I'm not currently looking for a position but I'm always
+			up for meeting new people! Feel free out over email at <a href="mailto:email@mattglei.ch"
 				>email@mattglei.ch</a
 			>
-			or on <a href="https://twitter.com/matt_gleich" about="_blank">twitter</a>!
+			or on <a href="https://twitter.com/matt_gleich" target="_blank" rel="noreferrer">twitter</a>.
 		</div>
 	</main>
 </div>
@@ -63,6 +63,12 @@
 		--foreground: white;
 		--border: rgb(58, 58, 58);
 		--line-color: #49a4ff;
+	}
+
+	@media (max-width: 578px) {
+		.welcome {
+			margin: 25px;
+		}
 	}
 
 	@media (prefers-color-scheme: light) {

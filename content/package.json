@@ -30,8 +30,6 @@
 	"type": "module",
 	"dependencies": {
 		"@mapbox/polyline": "^1.1.1",
-		"@types/d3-geo": "^3.0.3",
-		"@types/mapbox__polyline": "^1.0.2",
-		"d3-geo": "^3.1.0"
+		"@types/mapbox__polyline": "^1.0.2"
 	}
 }
