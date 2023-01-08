@@ -34,7 +34,8 @@
 	main {
 		display: flex;
 		flex-direction: column;
-		max-width: 600px;
+		justify-content: flex-start;
+		max-width: 800px;
 	}
 
 	nav {
@@ -44,6 +45,7 @@
 	.welcome {
 		padding: 20px;
 		border: 0.5px var(--border) solid;
+		margin-bottom: 50px;
 	}
 
 	/* global styles */
