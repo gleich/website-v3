@@ -1,6 +1,6 @@
 <script>
-	import Card from '$lib/card.svelte';
-	import Nav from '$lib/index/nav/nav.svelte';
+	import Card from '$lib/index/strava/card.svelte';
+	import Name from '$lib/index/name/name.svelte';
 
 	const polylines = [
 		'pdefAa}}y^HlDxCvFbC`CfEnAzDvF|BvAnH|@fF@xQ{EbHdBhFAd@I`BZf@`Cc@vCr@TYp@aDPc@jAjEhD`BvCZrBm@tFrB`Bp@rBk@lBNrAa@h@gANaDcAwBtB^~AnBvA`@tBkCDf@pCuAz@EdAz@rCjA@rCj@jCzCbC~AdEbDhA~AjBfF`AjBw@lF[dBj@nAdEfCe@jBApCfErEAjCuB`Bj@XvBzClArAC|AaAnAaFoAkBwCaBEgEdCcEtDc@|BmAb@yAKaC_G{BsDv@sCqByBpB}BeCsCI{@~@p@`Cy@xAP|A[x@g@b@cGbAgH{DSs@x@oCsC_CVkDs@oDr@eAnEl@jC|A`BYzBVpBc@`@qCnBT|@g@{@[iC_Bw@s@_BcC]eDZoUaIa@gCgDqBmCPMdC{@fAuFcBaAjC~C~Dc@rCNrAwAx@{DeAoBpBX|AtB~A`@nBoCNl@hCyA`AAjAZp@tClAb@lGdDrCrAtDjDvAlAdBlANv@uDqCcGh@cAlA`@PpCbAdBnB`AhBUCk@aCuArAeHi@mA?eBkAo@l@gASs@^gB~@DPhFrBnEi@bCzAZbAwB?wAt@uBsCiCXaDm@sEnAo@pDt@lC|A`EAvBYf@wCt@UlAb@lAuA_@aD{Am@a@sAuCg@iDVgU{Hc@gCeDsBmCNMdCs@bAeCe@oAqAoCqHgFyDRkA|CMb@uAaDgAmCd@Yc@PuAe@k@}FAiHcB_R|EiFG}HkAcBsAeDeFeGaCuE_HY}D|A_FEcEhAqD]}@gYgHs@yBt@mGu@gAwBhC[vDe@l@u@]IqEk@s@s_@{GA{LdBgFpAiHFgPi@gA_CByZrI}IfAsCs@uG{HuBm@aCH}DtBeCzFiAjAiWbEqDfBqBtCo@jFrA~LqBj@Op@jDbEeJbI[fBP|BpAxDrB~BtPnHpFlLhAPzBe@@iA~@}@uBuAIwBsAy@l@iBbB?hAzCfCzAjD_CCq@oC_CMgBn@c@jCO|Ab@nFxJbMiI|DbFp@ShCcGhGnEj@w@c@qCtBm@b@u@SuAwBwC_@mD{E{@kJd@yDrJuYiGcHb@aOlC[gBNsD~BgBGsDlAcC^kCiCmM|GkAxJoHpMR~An@bA~AV`DaE`GD`Ku@Z{D_AeFjEiM`B_G~A{@lCTlEfATzHwBvLeA~XlGbAu@|AiGr@}@jI[xEh@n@~DtBvCJvAsCnA`@fC]z@{@Q{EyD',
@@ -10,18 +10,17 @@
 
 <div class="root">
 	<main>
-		<nav>
-			<Nav />
-		</nav>
-		<div class="welcome">
-			hello and welcome to my website! I'm Matt Gleich, a first year student at RIT (Rochester
-			Institute of Technology) studying CS. I'm not currently looking for a position but I'm always
-			up for meeting new people! Feel free out over email at <a href="mailto:email@mattglei.ch"
-				>email@mattglei.ch</a
-			>
-			or on <a href="https://twitter.com/matt_gleich" target="_blank" rel="noreferrer">twitter</a>.
-		</div>
+		<Name />
 		<div class="cards">
+			<div class="welcome">
+				hello and welcome to my website! I'm Matt Gleich, a first year student at RIT (Rochester
+				Institute of Technology) studying CS. I'm not currently looking for a position but I'm
+				always up for meeting new people! Feel free out over email at <a
+					href="mailto:email@mattglei.ch">email@mattglei.ch</a
+				>
+				or on
+				<a href="https://twitter.com/matt_gleich" target="_blank" rel="noreferrer">twitter</a>.
+			</div>
 			<Card polyline={polylines[0]} />
 		</div>
 	</main>
@@ -48,6 +47,17 @@
 		padding: 20px;
 		border: 0.5px var(--border) solid;
 		margin: 25px;
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	.cards {
+		width: calc(100% - 40px);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		margin: 0 20px;
 	}
 
 	/* global styles */

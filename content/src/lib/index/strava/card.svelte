@@ -5,14 +5,14 @@
 </script>
 
 <div class="container">
-	<PolylineSvg {polyline} />
+	<!-- <PolylineSvg /> -->
 </div>
 
 <style>
 	.container {
-		border-radius: 5px;
-		color: black;
 		width: 100%;
-		height: 200px;
+		box-sizing: border-box;
+		padding: 10px;
+		border: 0.05px var(--border) solid;
 	}
 </style>
