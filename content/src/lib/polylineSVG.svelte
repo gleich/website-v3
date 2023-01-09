@@ -3,7 +3,7 @@
 	import mapboxgl from 'mapbox-gl';
 	import { toGeoJSON } from '@mapbox/polyline';
 	import bbox from '@turf/bbox';
-	const token = process?.env ? process?.env.VITE_MAPBOX_TOKEN : import.meta.env.VITE_MAPBOX_TOKEN;
+	const token = import.meta.env.VITE_MAPBOX_TOKEN;
 	console.log(token);
 
 	const polylineData =

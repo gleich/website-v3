@@ -44,14 +44,10 @@
 		max-width: 800px;
 	}
 
-	nav {
-		padding-bottom: 10px;
-	}
-
 	.welcome {
 		padding: 20px;
 		border: 0.5px var(--border) solid;
-		margin-bottom: 50px;
+		margin: 25px;
 	}
 
 	/* global styles */
@@ -62,11 +58,5 @@
 
 	:global(a) {
 		color: #49a4ff;
-	}
-
-	@media (max-width: 578px) {
-		.welcome {
-			margin: 25px;
-		}
 	}
 </style>
