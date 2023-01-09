@@ -1,81 +1,67 @@
 <script lang="ts">
-	import { decode } from '@mapbox/polyline';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
+	import mapboxgl from 'mapbox-gl';
+	import { toGeoJSON } from '@mapbox/polyline';
+	import bbox from '@turf/bbox';
+	const token = import.meta.env.VITE_MAPBOX_TOKEN;
+	console.log(token);
 
-	export let polyline: string;
+	const polylineData =
+		'o|peGze_tLaAzAi@ZeHb@aBX{@`A}@nCsCdO_DjVcEbUgAzGc@|DyAhTkBtRi@tIMjKJ~K`@nHz@xIrBfMLLdBTbFlCPVc@~Ai@~BEb@a@nAGd@|B`BdGnCZVxBz@nChC~B~C~@pCh@`Cd@vCAr@Jz@?~Fn@pET`AVf@T|@lA~Ar@p@dDtBL@VOd@VHTtB`BxElBrH~AxFvAdPhG|BvAxArBl@rBPfAFfB`@fDd@fCn@fBlAvBnA`BxAdAjCpAvAjAz@|@b@t@p@f@fAtANDj@p@Pl@n@dATz@^pBTl@PhBXtADjACv@A`CSxBDtAGxAK|@[x@rC?PHJEbAs@zFKtB@jA|Dt@zDXdArBlFrBrBf@jAp@~Ab@nBXrEIfF`@xEKzAp@vE`EtAt@nDbAhBV|FLjAVjAd@jA|@t@z@p@fAjBdE`ArAdCzB`DlDtIbGdBrAlBhBrDnE|AbCdAlDhRVtCF|AHrFGdBXdDd@zBr@jBlAtBbAtAvAjAjFjDBVIl@On@SVHDh@gB@_@ISoFwDcA}@_B_CyA_D[iAa@wCIgKSwDi@cEgCgMWoAg@sAaGuHcC_C_FeDmFgEgEkE{BqCiB_Es@kAcAkAoA{@oCy@oHWkFsAkAm@cFgEoAi@i@EmDNeEa@_FJmAIcB]_DoAkAaAaAeBcBqFy@aE_@aEEoAZqFNw@^mERiALUNCnDdAr@@pK{EjKkBlBFNKl@}EtAoH?o@K{@g@u@k@UmG?_AJi@`@Sb@Kf@Ah@xAlQ@hDi@jGtApNLv@[d@w@L}AAkQCmBQgAm@s@mC{@qBi@eEg@i@[g@m@Y{@KgAZuFKkA_@}@uAaBe@_AMi@AiAh@_CB]GM}@@sCf@s@@cHgDKSCoELqBiA]^OdBC`CP|GfCfA~@t@|DLzAGTKF}KdBcAW}EgC_@AITEj@IpDH|@Zr@z@h@hFpAz@r@XKFWEUQKgA@sFuAe@Y[o@K_ANmGCkEViDQg@eCiD]s@g@iBU_BG{BFuDTqAUWUT?TJ`@GnFHnBZjB\fAfBvCpA~ARAlAk@nDB~A`@fGbCp@x@Vp@b@zEGVu@TsJtAq@OcGyCOc@AaD@y@JwAPq@Vc@^Yt@KhEXlHnCp@t@Zx@Lr@VrDQVm@NsJpAs@OgG_DGYAeDJmCNm@Tc@`Ai@vERbGvBx@d@h@l@d@hALlA';
 
-	let minX = 256,
-		minY = 256,
-		maxX = 0,
-		maxY = 0,
-		height = 0,
-		width = 0;
-	const points: string[] = [];
-
-	const latLongPoints = decode(polyline);
-
-	function latLng2point(point: [number, number]) {
-		return {
-			x: (point[1] + 180) * (256 / 360),
-			y:
-				256 / 2 -
-				(256 * Math.log(Math.tan(Math.PI / 4 + +((point[0] * Math.PI) / 180 / 2)))) / (2 * Math.PI)
-		};
-	}
-
-	for (const latLongPoint of latLongPoints) {
-		const point = latLng2point(latLongPoint);
-		console.log(point);
-		minX = Math.min(minX, point.x);
-		minY = Math.min(minY, point.y);
-		maxX = Math.max(maxX, point.x);
-		maxY = Math.max(maxY, point.y);
-		points.push(point.x + ',' + point.y);
-	}
-	height = maxY - minY;
-	width = maxX - minX;
-
-	let length = 0;
+	let map: mapboxgl.Map | null;
+	let mapElement: HTMLElement;
 
 	onMount(() => {
-		let path = document.getElementById('path') as SVGPathElement | null;
-		length = path?.getTotalLength() ?? 0;
+		mapboxgl.accessToken = token;
+		map = new mapboxgl.Map({
+			container: mapElement,
+			style: 'mapbox://styles/mapbox/dark-v10',
+			antialias: true,
+			attributionControl: false,
+			zoom: 0
+		}).addControl(new mapboxgl.AttributionControl({ compact: true }));
+		map.on('load', () => {
+			const data = toGeoJSON(polylineData);
+			map?.addSource('route', {
+				type: 'geojson',
+				data
+			});
+			map?.addLayer({
+				id: 'route',
+				type: 'line',
+				source: 'route',
+				layout: {
+					'line-join': 'round',
+					'line-cap': 'round'
+				},
+				paint: {
+					'line-color': '#FFF',
+					'line-width': 2
+				}
+			});
+			const bounds = bbox(data);
+			map?.fitBounds([bounds[0], bounds[1], bounds[2], bounds[3]], { padding: 20, duration: 0 });
+		});
+	});
+
+	onDestroy(() => {
+		if (map) {
+			map.remove();
+			map = null;
+		}
 	});
 </script>
 
-<div style={`--length:${length}`}>
-	<svg
-		height="400"
-		width="400"
-		viewBox={`${minX} ${minY} ${width} ${height}`}
-		preserveAspectRatio="XMinYMin meet"
-	>
-		<g>
-			<path id="path" d={`M${points.join(' ')}`} />
-		</g>
-	</svg>
-</div>
+<div id="map" bind:this={mapElement} />
+
+<svelte:head>
+	<link href="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css" rel="stylesheet" />
+</svelte:head>
 
 <style>
-	path {
-		stroke: var(--foreground);
-		stroke-width: 0.0005;
-		fill: none;
-		stroke-dasharray: var(--length);
-		stroke-dashoffset: var(--length);
-		animation: sign 20s infinite;
-	}
-
-	svg {
-		width: 150px;
-		height: auto;
-		padding: 10px;
-		border: 0.5px var(--border) solid;
-	}
-
-	@keyframes sign {
-		to {
-			stroke-dashoffset: 0;
-		}
+	#map {
+		height: 250px;
+		width: 250px;
 	}
 </style>

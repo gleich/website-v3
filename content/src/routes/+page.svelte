@@ -23,15 +23,12 @@
 		</div>
 		<div class="cards">
 			<Card polyline={polylines[0]} />
-			<Card polyline={polylines[1]} />
 		</div>
 	</main>
 </div>
 
 <style>
 	.root {
-		background-color: var(--background);
-		color: var(--foreground);
 		width: 100vw;
 		height: 100vh;
 		display: flex;
@@ -67,24 +64,9 @@
 		color: #49a4ff;
 	}
 
-	:root {
-		--background: rgb(14, 14, 14);
-		--foreground: white;
-		--border: rgb(58, 58, 58);
-		--line-color: #49a4ff;
-	}
-
 	@media (max-width: 578px) {
 		.welcome {
 			margin: 25px;
-		}
-	}
-
-	@media (prefers-color-scheme: light) {
-		:root {
-			--background: white;
-			--foreground: rgb(14, 14, 14);
-			--border: rgb(214, 214, 214);
 		}
 	}
 </style>
