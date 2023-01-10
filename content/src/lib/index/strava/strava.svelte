@@ -24,7 +24,6 @@
 </script>
 
 <div class="container">
-	<h1>Recent Bike Rides</h1>
 	{#each data.filter((v) => !v.private && v.map.summary_polyline != '').slice(0, 5) as activity}
 		<div class="activity">
 			<PolylineSvg polylineData={activity.map.summary_polyline} />
@@ -59,6 +58,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
+		box-shadow: 0px 0px 10px var(--border);
 	}
 
 	.activity {

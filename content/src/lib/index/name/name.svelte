@@ -52,6 +52,7 @@
 		text-align: left;
 		font-weight: bold;
 		font-style: italic;
+		line-height: 50px;
 	}
 
 	.socials {
@@ -63,7 +64,7 @@
 	.right {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
+		align-items: flex-start;
 		padding-top: 15px;
 	}
 
