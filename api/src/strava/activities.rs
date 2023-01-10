@@ -30,6 +30,7 @@ pub struct Activity {
     pub suffer_score: f32,
     pub pr_count: u32,
     pub distance: f32,
+    pub id: u32,
 }
 
 #[derive(Debug, PartialEq, Deserialize, Serialize, Clone)]
