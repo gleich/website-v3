@@ -1,71 +1,64 @@
 <script lang="ts">
-	import { onDestroy, onMount } from 'svelte';
-	import mapboxgl from 'mapbox-gl';
-	import { toGeoJSON } from '@mapbox/polyline';
-	import bbox from '@turf/bbox';
-	const token = import.meta.env.VITE_MAPBOX_TOKEN;
-
+	import { decode } from '@mapbox/polyline';
+	import { onMount } from 'svelte';
 	export let polyline: string;
-
-	let prefersDarkMode = false;
-
-	let map: mapboxgl.Map | null;
-	let mapElement: HTMLElement;
-
+	let minX = 256,
+		minY = 256,
+		maxX = 0,
+		maxY = 0,
+		height = 0,
+		width = 0;
+	const points: string[] = [];
+	const latLongPoints = decode(polyline);
+	function latLng2point(point: [number, number]) {
+		return {
+			x: (point[1] + 180) * (256 / 360),
+			y:
+				256 / 2 -
+				(256 * Math.log(Math.tan(Math.PI / 4 + +((point[0] * Math.PI) / 180 / 2)))) / (2 * Math.PI)
+		};
+	}
+	for (const latLongPoint of latLongPoints) {
+		const point = latLng2point(latLongPoint);
+		minX = Math.min(minX, point.x);
+		minY = Math.min(minY, point.y);
+		maxX = Math.max(maxX, point.x);
+		maxY = Math.max(maxY, point.y);
+		points.push(point.x + ',' + point.y);
+	}
+	height = maxY - minY;
+	width = maxX - minX;
+	let length = 0;
 	onMount(() => {
-		prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-		mapboxgl.accessToken = token;
-		map = new mapboxgl.Map({
-			container: mapElement,
-			style: prefersDarkMode
-				? 'mapbox://styles/mapbox/dark-v10'
-				: 'mapbox://styles/mapbox/light-v10',
-			antialias: true,
-			attributionControl: false,
-			zoom: 0,
-			scrollZoom: false
-		}).addControl(new mapboxgl.AttributionControl({ compact: true }));
-		map.on('load', () => {
-			const data = toGeoJSON(polyline);
-			map?.addSource('route', {
-				type: 'geojson',
-				data
-			});
-			map?.addLayer({
-				id: 'route',
-				type: 'line',
-				source: 'route',
-				layout: {
-					'line-join': 'round',
-					'line-cap': 'round'
-				},
-				paint: {
-					'line-color': prefersDarkMode ? '#FFF' : '#000',
-					'line-width': 1.5
-				}
-			});
-			const bounds = bbox(data);
-			map?.fitBounds([bounds[0], bounds[1], bounds[2], bounds[3]], { padding: 20, duration: 0 });
-		});
-	});
-
-	onDestroy(() => {
-		if (map) {
-			map.remove();
-			map = null;
-		}
+		let path = document.getElementById('path') as SVGPathElement | null;
+		length = path?.getTotalLength() ?? 0;
+		console.log(length);
 	});
 </script>
 
-<div id="map" bind:this={mapElement} />
-
-<svelte:head>
-	<link href="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css" rel="stylesheet" />
-</svelte:head>
+<div>
+	<svg
+		height="400"
+		width="400"
+		viewBox={`${minX} ${minY} ${width} ${height}`}
+		preserveAspectRatio="XMinYMin meet"
+	>
+		<g>
+			<path id="path" d={`M${points.join(' ')}`} />
+		</g>
+	</svg>
+</div>
 
 <style>
-	#map {
-		height: 250px;
-		width: 250px;
+	path {
+		stroke: var(--foreground);
+		stroke-width: 0.00015;
+		fill: none;
+	}
+	svg {
+		width: 150px;
+		height: auto;
+		padding: 10px;
+		border: 0.5px var(--border) solid;
 	}
 </style>
