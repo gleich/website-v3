@@ -27,7 +27,7 @@
 	<h1>Recent Bike Rides</h1>
 	{#each data.filter((v) => !v.private && v.map.summary_polyline != '').slice(0, 5) as activity}
 		<div class="activity">
-			<PolylineSvg polyline={activity.map.summary_polyline} />
+			<PolylineSvg polylineData={activity.map.summary_polyline} />
 			<div class="activity-data">
 				<h3>{activity.name}</h3>
 				<h5>{dayjs(activity.start_date).fromNow()}</h5>

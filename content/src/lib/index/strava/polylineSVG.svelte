@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { decode } from '@mapbox/polyline';
+	import polyline from '@mapbox/polyline';
 	import { onMount } from 'svelte';
-	export let polyline: string;
+	export let polylineData: string;
 	let minX = 256,
 		minY = 256,
 		maxX = 0,
@@ -9,7 +9,7 @@
 		height = 0,
 		width = 0;
 	const points: string[] = [];
-	const latLongPoints = decode(polyline);
+	const latLongPoints = polyline.decode(polylineData);
 	function latLng2point(point: [number, number]) {
 		return {
 			x: (point[1] + 180) * (256 / 360),
