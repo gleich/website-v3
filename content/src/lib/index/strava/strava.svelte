@@ -44,6 +44,13 @@
 					<p>Average Power: {activity.average_watts} watts</p>
 				{/if}
 				<p>Average Heartrate: {activity.average_heartrate} bmp</p>
+				<p>
+					<a
+						href={'https://www.strava.com/activities/' + activity.id}
+						target="_blank"
+						rel="noreferrer">View on Strava</a
+					>
+				</p>
 			</div>
 		</div>
 	{/each}
