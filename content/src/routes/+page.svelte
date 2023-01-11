@@ -2,12 +2,16 @@
 	import Strava from '$lib/index/strava/strava.svelte';
 	import Name from '$lib/index/name/name.svelte';
 	import type { LoadData } from './+page.server';
+	import Head from '$lib/head.svelte';
 
 	export let data: LoadData;
 </script>
 
 <svelte:head>
-	<title>Matt Gleich</title>
+	<Head
+		title="Matt Gleich"
+		description="first year student at RIT studying CS. cyclist, photographer, and student"
+	/>
 </svelte:head>
 
 <div class="root">
