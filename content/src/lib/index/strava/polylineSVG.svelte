@@ -19,7 +19,7 @@
 			container: mapElement,
 			style: prefersDarkMode
 				? 'mapbox://styles/mapbox/dark-v11'
-				: 'mapbox://styles/mapbox/outdoors-v12',
+				: 'mapbox://styles/mapbox/light-v11',
 			antialias: true,
 			attributionControl: false,
 			zoom: 0,
