@@ -18,8 +18,8 @@
 		map = new mapboxgl.Map({
 			container: mapElement,
 			style: prefersDarkMode
-				? 'mapbox://styles/mapbox/dark-v10'
-				: 'mapbox://styles/mapbox/light-v10',
+				? 'mapbox://styles/mapbox/dark-v11'
+				: 'mapbox://styles/mapbox/outdoors-v12',
 			antialias: true,
 			attributionControl: false,
 			zoom: 0,
@@ -36,12 +36,13 @@
 				type: 'line',
 				source: 'route',
 				layout: {
-					'line-join': 'round',
-					'line-cap': 'round'
+					'line-join': 'miter',
+					'line-cap': 'square'
 				},
 				paint: {
 					'line-color': prefersDarkMode ? '#FFF' : '#000',
-					'line-width': 1.5
+					'line-width': 1.5,
+					'line-opacity': 0.8
 				}
 			});
 			const bounds = bbox(data);
