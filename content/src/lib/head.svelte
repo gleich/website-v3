@@ -18,6 +18,7 @@
 	content="Matt Gleich, Matt, Gleich, Matthew Gleich, Matthew, Gleich, photography, coding, cycling, hampshire"
 />
 <meta name="author" content="Matt Gleich" />
+<link rel="preconnect" href="https://mattglei.ch" />
 
 <!-- icons -->
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
