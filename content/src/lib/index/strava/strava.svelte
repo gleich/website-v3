@@ -72,4 +72,12 @@
 		display: flex;
 		gap: 10px;
 	}
+
+	@media (max-width: 578px) {
+		.activity {
+			flex-direction: column;
+			border: 0.5px solid var(--border);
+			padding: 10px;
+		}
+	}
 </style>

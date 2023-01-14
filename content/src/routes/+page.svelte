@@ -19,7 +19,7 @@
 		<Name />
 		<div class="cards">
 			<div class="welcome">
-				hello and welcome to my website! I'm Matt Gleich, a first year student at <a
+				I'm Matt Gleich, a first year student at <a
 					href="https://www.rit.edu/"
 					target="_blank"
 					rel="noreferrer">RIT</a
@@ -41,7 +41,6 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		font-family: 'Helvetica';
 		margin-top: 30vh;
 		margin-bottom: 100px;
 	}
@@ -63,7 +62,7 @@
 	}
 
 	.cards {
-		width: calc(100% - 40px);
+		width: calc(100% - 40px); /* -40px for side margins */
 		display: flex;
 		align-items: center;
 		justify-content: center;
