@@ -18,8 +18,8 @@
 		map = new mapboxgl.Map({
 			container: mapElement,
 			style: prefersDarkMode
-				? 'mapbox://styles/mapbox/dark-v11'
-				: 'mapbox://styles/mapbox/light-v11',
+				? 'mapbox://styles/mapbox/dark-v11?optimize=true'
+				: 'mapbox://styles/mapbox/light-v11?optimize=true',
 			antialias: true,
 			attributionControl: false,
 			zoom: 0,
