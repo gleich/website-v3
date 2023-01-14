@@ -28,6 +28,7 @@
 			text-align: left;
 			font-weight: bold;
 			font-style: italic;
+			text-shadow: var(--foreground) 1px 0 10px;
 		}
 
 		h1 {
@@ -37,6 +38,17 @@
 
 		h2 {
 			font-size: 2.5rem;
+			font-family: 'Computer Modern';
+			line-height: 40px;
+			text-decoration: underline 1px var(--foreground);
+		}
+
+		h3 {
+			font-size: 1.5rem;
+		}
+
+		p {
+			font-size: 1.1rem;
 		}
 
 		@media (prefers-color-scheme: light) {
@@ -45,6 +57,17 @@
 				--foreground: rgb(14, 14, 14);
 				--border: rgb(214, 214, 214);
 			}
+		}
+
+		@font-face {
+			font-family: 'ProFontWindows';
+			src: url('/fonts/ProFontWindows.ttf');
+		}
+
+		@font-face {
+			font-family: 'Computer Modern';
+			font-style: italic;
+			src: url('/fonts/cmunci.ttf');
 		}
 	</style>
 	<body data-sveltekit-preload-data="hover">

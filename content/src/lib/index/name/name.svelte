@@ -90,9 +90,4 @@
 			width: 300px;
 		}
 	}
-
-	@font-face {
-		font-family: 'ProFontWindows';
-		src: url('/fonts/ProFontWindows.ttf');
-	}
 </style>
