@@ -24,7 +24,7 @@
 <nav>
 	<Logo class="logo" />
 	<div class="right">
-		<h1 class="name">Matt Gleich</h1>
+		<h1>Matt Gleich</h1>
 		<div class="bottom">
 			<div class="socials">
 				<Social name="GitHub" link="https://github.com/gleich" filename="github" />
@@ -45,14 +45,6 @@
 	nav {
 		display: flex;
 		align-items: center;
-	}
-
-	.name {
-		font-size: 4rem;
-		text-align: left;
-		font-weight: bold;
-		font-style: italic;
-		line-height: 50px;
 	}
 
 	.socials {

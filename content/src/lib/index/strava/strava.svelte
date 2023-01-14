@@ -24,6 +24,7 @@
 </script>
 
 <div class="container">
+	<h2 class="title">Activities</h2>
 	{#each data.filter((v) => !v.private && v.map.summary_polyline != '').slice(0, 5) as activity}
 		<div class="activity">
 			<PolylineSvg polyline={activity.map.summary_polyline} />
@@ -57,6 +58,12 @@
 </div>
 
 <style>
+	.title {
+		margin: 5px;
+		border-bottom: 1px solid white;
+		width: min-content;
+	}
+
 	.container {
 		width: 100%;
 		box-sizing: border-box;
