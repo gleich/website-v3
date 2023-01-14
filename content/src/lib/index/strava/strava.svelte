@@ -87,6 +87,11 @@
 				<p>
 					Duration: {renderDuration(activity.moving_time)}
 				</p>
+				<p>
+					Climbing: {Math.round(activity.total_elevation_gain * 3.281)} ft ({Math.round(
+						activity.total_elevation_gain
+					)} m)
+				</p>
 				{#if activity.average_watts != 0}
 					<p>Average Power: {activity.average_watts} watts</p>
 				{/if}

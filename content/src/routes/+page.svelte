@@ -25,7 +25,7 @@
 					rel="noreferrer">RIT</a
 				>
 				(Rochester Institute of Technology) studying CS. I'm not currently looking for a position but
-				I'm always up for meeting new people! Feel free out over email at
+				I'm always up for meeting new people! Feel free to reach out over email at
 				<a href="mailto:email@mattglei.ch">email@mattglei.ch</a>
 				or on
 				<a href="https://twitter.com/matt_gleich" target="_blank" rel="noreferrer">twitter</a>.
