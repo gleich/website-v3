@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <style>
-	html {
+	body {
 		display: flex;
 		width: 100vw;
 		margin: 0;
@@ -8,10 +8,7 @@
 		background-color: var(--background);
 		color: var(--foreground);
 		font-family: 'Helvetica';
-	}
-
-	body {
-		margin: 0;
+		overflow-x: hidden;
 	}
 
 	:root {
@@ -75,6 +72,6 @@
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">
-		<div style="display: contents">%sveltekit.body%</div>
+		<div style="display: contents" class="body">%sveltekit.body%</div>
 	</body>
 </html>
