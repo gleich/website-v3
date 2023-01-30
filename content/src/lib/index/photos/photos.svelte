@@ -22,7 +22,7 @@
 	</p>
 
 	{#each filenames as filename}
-		<img src={`/photos/${filename}.png`} alt="filename" loading="lazy" />
+		<img src={`/photos/${filename}.jpg`} alt="filename" loading="lazy" />
 	{/each}
 </Card>
 
