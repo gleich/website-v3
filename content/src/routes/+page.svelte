@@ -1,8 +1,10 @@
 <script lang="ts">
 	import Strava from '$lib/index/strava/strava.svelte';
-	import Name from '$lib/index/name/name.svelte';
+	import Name from '$lib/index/nav/name.svelte';
 	import type { LoadData } from './+page.server';
 	import Head from '$lib/head.svelte';
+	import Photos from '$lib/index/photos/photos.svelte';
+	import Card from '$lib/index/card.svelte';
 
 	export let data: LoadData;
 </script>
@@ -18,19 +20,22 @@
 	<main>
 		<Name />
 		<div class="cards">
-			<div class="welcome">
-				I'm Matt Gleich, a first year student at <a
-					href="https://www.rit.edu/"
-					target="_blank"
-					rel="noreferrer">RIT</a
-				>
-				(Rochester Institute of Technology) studying CS. I'm not currently looking for a position but
-				I'm always up for meeting new people! Feel free to reach out over email at
-				<a href="mailto:email@mattglei.ch">email@mattglei.ch</a>
-				or on
-				<a href="https://twitter.com/matt_gleich" target="_blank" rel="noreferrer">twitter</a>.
-			</div>
+			<Card>
+				<p>
+					I'm Matt Gleich, a first year student at <a
+						href="https://www.rit.edu/"
+						target="_blank"
+						rel="noreferrer">RIT</a
+					>
+					(Rochester Institute of Technology) studying CS. I'm not currently looking for a position but
+					I'm always up for meeting new people. Feel free to reach out over email at
+					<a href="mailto:email@mattglei.ch">email@mattglei.ch</a>
+					or on
+					<a href="https://twitter.com/matt_gleich" target="_blank" rel="noreferrer">twitter</a>.
+				</p>
+			</Card>
 			<Strava data={data.props.rides} />
+			<Photos />
 		</div>
 	</main>
 </div>
@@ -50,15 +55,6 @@
 		flex-direction: column;
 		justify-content: flex-start;
 		max-width: 800px;
-	}
-
-	.welcome {
-		padding: 20px;
-		border: 0.5px var(--border) solid;
-		margin: 25px;
-		width: 100%;
-		box-sizing: border-box;
-		box-shadow: 0px 0px 10px var(--border);
 	}
 
 	.cards {

@@ -5,6 +5,7 @@
 	import duration from 'dayjs/plugin/duration';
 	import relativeTime from 'dayjs/plugin/relativeTime';
 	import { onMount } from 'svelte';
+	import Card from '../card.svelte';
 
 	dayjs.extend(duration);
 	dayjs.extend(relativeTime);
@@ -69,7 +70,7 @@
 	});
 </script>
 
-<div class="container">
+<Card>
 	<h2 class="title">Recent Activities</h2>
 	{#each activities as activity, i}
 		<div class="activity">
@@ -106,23 +107,12 @@
 			</div>
 		</div>
 	{/each}
-</div>
+</Card>
 
 <style>
 	.title {
 		margin: 5px;
 		margin-bottom: 10px;
-	}
-
-	.container {
-		width: 100%;
-		box-sizing: border-box;
-		padding: 10px;
-		border: 0.05px var(--border) solid;
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-		box-shadow: 0px 0px 10px var(--border);
 	}
 
 	.activity {
