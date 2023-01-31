@@ -124,6 +124,10 @@
 		font-family: 'ProFontWindows';
 	}
 
+	p {
+		font-size: 1.2rem;
+	}
+
 	@media (max-width: 578px) {
 		.activity {
 			flex-direction: column;
