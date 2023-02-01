@@ -18,7 +18,7 @@
 
 	<p>
 		I also like to take photos in my free time. Here is some of my favorite photos I've taken over
-		the past few years.
+		the past few years. I mainly shoot with Nikon cameras and my current one is a Nikon Z7II.
 	</p>
 
 	{#each filenames as filename}

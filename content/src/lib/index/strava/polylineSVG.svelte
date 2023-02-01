@@ -48,6 +48,10 @@
 			const bounds = bbox(data);
 			map?.fitBounds([bounds[0], bounds[1], bounds[2], bounds[3]], { padding: 20, duration: 0 });
 		});
+
+		map.on('idle', () => {
+			map?.resize();
+		});
 	});
 
 	onDestroy(() => {
@@ -58,7 +62,9 @@
 	});
 </script>
 
-<div id="map" bind:this={mapElement} />
+<div class="container">
+	<div id="map" bind:this={mapElement} />
+</div>
 
 <svelte:head>
 	<link href="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css" rel="stylesheet" />
@@ -66,7 +72,7 @@
 
 <style>
 	#map {
-		height: 250px;
 		width: 250px;
+		height: 250px;
 	}
 </style>
