@@ -18,12 +18,18 @@
 		--line-color: #49a4ff;
 	}
 
+	::selection {
+		background-color: var(--foreground);
+		text-decoration-color: var(--background);
+		color: var(--background);
+	}
+
 	h1,
 	h2 {
 		text-align: left;
 		font-weight: bold;
 		font-style: italic;
-		text-shadow: var(--foreground) 1px 0 10px;
+		text-shadow: var(--foreground) 1px 0 7px;
 	}
 
 	h1 {
