@@ -72,6 +72,12 @@
 
 <Card>
 	<h2 class="title">Recent Activities</h2>
+	<p>
+		Currently I am training for <a href="https://eccc-cycling.com/" target="_blank" rel="noreferrer"
+			>ECCC</a
+		> (Eastern Collegiate Cycling Conference) road racing in the Spring of 2023. I am currently on a
+		medium volume training plan ~3-6 hrs/week.
+	</p>
 	{#each activities as activity, i}
 		<div class="activity">
 			<PolylineSvg polyline={activity.map.summary_polyline} />
@@ -112,7 +118,6 @@
 <style>
 	.title {
 		margin: 5px;
-		margin-bottom: 10px;
 	}
 
 	.activity {
@@ -124,7 +129,7 @@
 		font-family: 'ProFontWindows';
 	}
 
-	p {
+	.activity-data > p {
 		font-size: 1.2rem;
 	}
 
