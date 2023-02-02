@@ -9,6 +9,19 @@
 		color: var(--foreground);
 		font-family: 'Helvetica';
 		overflow-x: hidden;
+		scrollbar-color: var(--border);
+	}
+
+	::-webkit-scrollbar {
+		width: 5px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: var(--border);
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: var(--foreground);
 	}
 
 	:root {
@@ -29,7 +42,7 @@
 		text-align: left;
 		font-weight: bold;
 		font-style: italic;
-		text-shadow: var(--foreground) 1px 0 7px;
+		text-shadow: var(--foreground) 1px 0 6px;
 	}
 
 	h1 {
@@ -42,6 +55,7 @@
 		font-family: 'Computer Modern';
 		line-height: 40px;
 		text-decoration: underline 1px var(--foreground);
+		text-underline-offset: 4px;
 	}
 
 	h3 {
