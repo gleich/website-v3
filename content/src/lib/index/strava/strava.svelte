@@ -6,6 +6,7 @@
 	import relativeTime from 'dayjs/plugin/relativeTime';
 	import { onMount } from 'svelte';
 	import Card from '../card.svelte';
+	import NoMap from './noMap.svelte';
 
 	dayjs.extend(duration);
 	dayjs.extend(relativeTime);
@@ -56,7 +57,7 @@
 		}
 	}
 
-	$: activities = data.filter((v) => !v.private && v.map.summary_polyline != '').slice(0, 4);
+	$: activities = data.filter((v) => !v.private).slice(0, 4);
 	$: diffs = new Array(4);
 
 	onMount(() => {
@@ -80,7 +81,11 @@
 	</p>
 	{#each activities as activity, i}
 		<div class="activity">
-			<PolylineSvg polyline={activity.map.summary_polyline} />
+			{#if activity.map.summary_polyline === ''}
+				<NoMap />
+			{:else}
+				<PolylineSvg polyline={activity.map.summary_polyline} />
+			{/if}
 			<div class="activity-data">
 				<h3>{activity.name}</h3>
 				<h5>{diffs[i]}</h5>
