@@ -24,6 +24,7 @@ pub struct Activity {
     pub average_watts: f32,
     #[serde(default)]
     pub device_watts: bool,
+    #[serde(default)]
     pub average_heartrate: f32,
     pub total_elevation_gain: f32,
     pub moving_time: u32,
