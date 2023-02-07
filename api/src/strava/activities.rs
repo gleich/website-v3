@@ -28,6 +28,7 @@ pub struct Activity {
     pub average_heartrate: f32,
     pub total_elevation_gain: f32,
     pub moving_time: u32,
+    #[serde(default)]
     pub suffer_score: f32,
     pub pr_count: u32,
     pub distance: f32,
