@@ -10,11 +10,13 @@ on:
 jobs:
   caprover:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: './api'
     steps:
       - uses: actions/checkout@v2
       - run: |
-          echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u gleich --password-stdin
+          echo ${{ secrets.GHCR_TOKEN }} | docker login ghcr.io -u gleich --password-stdin
           docker build -t ghcr.io/gleich/website_api .
           docker push ghcr.io/gleich/website_api
       - run: docker run caprover/cli-caprover:v2.1.1 caprover deploy --caproverUrl https://api.mattglei.ch --caproverPassword ${{ secrets.CAPROVER_PASSWORD }} --caproverApp ap --imageName ghcr.io/gleich/website_api
-
