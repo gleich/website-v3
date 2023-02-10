@@ -16,6 +16,7 @@ lazy_static! {
 pub fn endpoint(_token: auth::Token) -> Json<Event> {
     let arc_ref = Arc::clone(&DATA);
     let data = arc_ref.lock().unwrap();
+    println!("things cache endpoint hit");
     Json(data.clone())
 }
 

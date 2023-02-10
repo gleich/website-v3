@@ -15,6 +15,7 @@ lazy_static! {
 pub fn endpoint(_token: auth::Token) -> Json<Vec<Activity>> {
     let arc_ref = Arc::clone(&ACTIVITIES);
     let recent_activities = arc_ref.lock().unwrap();
+    println!("strava cache endpoint hit");
     Json((recent_activities.clone()).to_vec())
 }
 
