@@ -3,6 +3,7 @@ use std::sync::{Arc, Mutex, MutexGuard, PoisonError};
 use lazy_static::lazy_static;
 use rocket::get;
 use rocket::serde::json::Json;
+use tracing::info;
 
 use crate::auth;
 use crate::strava::activities::Activity;
@@ -15,7 +16,7 @@ lazy_static! {
 pub fn endpoint(_token: auth::Token) -> Json<Vec<Activity>> {
     let arc_ref = Arc::clone(&ACTIVITIES);
     let recent_activities = arc_ref.lock().unwrap();
-    println!("strava cache endpoint hit");
+    info!("strava cache endpoint hit");
     Json((recent_activities.clone()).to_vec())
 }
 

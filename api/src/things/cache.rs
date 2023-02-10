@@ -3,6 +3,7 @@ use std::sync::{Arc, Mutex, MutexGuard, PoisonError};
 use lazy_static::lazy_static;
 use rocket::get;
 use rocket::serde::json::Json;
+use tracing::info;
 
 use crate::auth;
 
@@ -16,7 +17,7 @@ lazy_static! {
 pub fn endpoint(_token: auth::Token) -> Json<Event> {
     let arc_ref = Arc::clone(&DATA);
     let data = arc_ref.lock().unwrap();
-    println!("things cache endpoint hit");
+    info!("things cache endpoint hit");
     Json(data.clone())
 }
 
