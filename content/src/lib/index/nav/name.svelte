@@ -21,7 +21,7 @@
 	});
 </script>
 
-<nav>
+<div class="container">
 	<Logo class="logo" />
 	<div class="right">
 		<h1>Matt Gleich</h1>
@@ -39,10 +39,10 @@
 			<p class="subtitle">{subtitles[subtitleIndex]}</p>
 		</div>
 	</div>
-</nav>
+</div>
 
 <style>
-	nav {
+	.container {
 		display: flex;
 		align-items: center;
 	}
