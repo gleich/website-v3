@@ -137,8 +137,10 @@
 							<a
 								href={'https://www.strava.com/activities/' + activity.id}
 								target="_blank"
-								rel="noreferrer">View on Strava</a
-							>
+								rel="noreferrer"
+								>View on Strava
+							</a>
+							<img class="stravaIcon" src="/icons/strava.svg" alt="strava icon" />
 						</p>
 					</tr>
 				</table>
@@ -182,6 +184,15 @@
 	.stravaLink {
 		padding-top: 5px;
 		text-align: right;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		gap: 5px;
+	}
+
+	.stravaIcon {
+		width: 17px;
+		height: auto;
 	}
 
 	@media (max-width: 578px) {
