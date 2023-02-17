@@ -38,22 +38,22 @@
 			const secondsDiff = Math.abs(Number(diff.format('s')));
 			let display = [];
 			if (yearsDiff > 0) {
-				display.push(`${yearsDiff} years`);
+				display.push(`${yearsDiff} ` + (yearsDiff === 1 ? 'year' : 'years'));
 			}
 			if (monthsDiff > 0) {
-				display.push(`${monthsDiff} months`);
+				display.push(`${monthsDiff} ` + (monthsDiff === 1 ? 'month' : 'months'));
 			}
 			if (daysDiff > 0) {
-				display.push(`${daysDiff} days`);
+				display.push(`${daysDiff} ` + (daysDiff === 1 ? 'day' : 'days'));
 			}
 			if (hoursDiff > 0) {
-				display.push(`${hoursDiff} hours`);
+				display.push(`${hoursDiff} ` + (hoursDiff === 1 ? 'hour' : 'hours'));
 			}
 			if (minutesDiff > 0) {
-				display.push(`${minutesDiff} minutes`);
+				display.push(`${minutesDiff} ` + (minutesDiff === 1 ? 'minute' : 'minutes'));
 			}
 			if (secondsDiff > 0) {
-				display.push(`${secondsDiff} seconds`);
+				display.push(`${secondsDiff} ` + (secondsDiff === 1 ? 'second' : 'seconds'));
 			}
 			diffs[i] = display.join(', ') + ' ago';
 		}
