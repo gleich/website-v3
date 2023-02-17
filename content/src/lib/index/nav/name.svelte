@@ -71,7 +71,6 @@
 	}
 
 	.subtitle {
-		font-family: 'ProFontWindows';
 		font-size: 18px;
 		line-height: 10px;
 	}
