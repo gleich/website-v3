@@ -63,6 +63,7 @@
 	$: diffs = new Array(4);
 
 	onMount(() => {
+		renderTimeDiff();
 		const interval = setInterval(() => {
 			renderTimeDiff();
 		}, 100);
