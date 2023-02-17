@@ -20,7 +20,9 @@
 		if (seconds > 3600) {
 			const hours = Number(movingDuration.format('H'));
 			const hoursName = hours > 1 ? 'hrs' : 'hr';
-			return `${hours}${hoursName} & ${minutes}${minutesName}`;
+			return `${hours} ${hoursName} & ${minutes} ${minutesName}`;
+		} else if (seconds === 3600) {
+			return '1 hour';
 		}
 		return `${minutes}${minutesName}`;
 	}
