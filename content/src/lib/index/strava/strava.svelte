@@ -193,6 +193,7 @@
 	.stravaIcon {
 		width: 17px;
 		height: auto;
+		filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(298deg) brightness(102%) contrast(102%);
 	}
 
 	@media (max-width: 578px) {
@@ -200,6 +201,12 @@
 			flex-direction: column;
 			border: 0.5px solid var(--border);
 			padding: 10px;
+		}
+	}
+
+	@media (prefers-color-scheme: light) {
+		.stravaIcon {
+			filter: invert(5%) sepia(4%) saturate(5432%) hue-rotate(195deg) brightness(96%) contrast(88%);
 		}
 	}
 </style>
