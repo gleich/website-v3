@@ -74,5 +74,6 @@
 	#map {
 		width: 250px;
 		height: 250px;
+		border: 0.5px solid var(--border);
 	}
 </style>

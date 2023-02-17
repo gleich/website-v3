@@ -78,8 +78,12 @@
 	<p>
 		Currently I am training for <a href="https://eccc-cycling.com/" target="_blank" rel="noreferrer"
 			>ECCC</a
-		> (Eastern Collegiate Cycling Conference) road racing in the Spring of 2023. I am currently on a
-		medium volume training plan ~3-6 hrs/week.
+		>
+		(Eastern Collegiate Cycling Conference) road racing in the Spring of 2023. I am currently on a medium
+		volume training plan ~6-8 hrs/week. You can even see my
+		<a href="https://www.trainerroad.com/app/career/mattgleich" target="_blank" rel="noreferrer"
+			>training plan</a
+		> that I have through trainerroad.
 	</p>
 	{#each activities as activity, i}
 		<div class="activity">
@@ -89,34 +93,55 @@
 				<PolylineSvg polyline={activity.map.summary_polyline} />
 			{/if}
 			<div class="activity-data">
-				<h3>{activity.name}</h3>
+				<h3>
+					{activity.sport_type === 'Ride' || activity.sport_type === 'VirtualRide'
+						? 'Cycling'
+						: activity.sport_type}: {activity.name}
+				</h3>
 				<h5>{diffs[i]}</h5>
 				<br />
-				<p>
-					Distance: {((activity.distance * 0.621) / 1000).toPrecision(4)} miles ({(
-						activity.distance / 1000
-					).toPrecision(4)}
-					km)
-				</p>
-				<p>
-					Duration: {renderDuration(activity.moving_time)}
-				</p>
-				<p>
-					Climbing: {Math.round(activity.total_elevation_gain * 3.281)} ft ({Math.round(
-						activity.total_elevation_gain
-					)} m)
-				</p>
-				{#if activity.average_watts != 0}
-					<p>Average Power: {activity.average_watts} watts</p>
-				{/if}
-				<p>Average Heartrate: {activity.average_heartrate} bmp</p>
-				<p>
-					<a
-						href={'https://www.strava.com/activities/' + activity.id}
-						target="_blank"
-						rel="noreferrer">View on Strava</a
-					>
-				</p>
+				<table>
+					<tr>
+						<th>Distance</th>
+						<td
+							>{((activity.distance * 0.621) / 1000).toPrecision(4)} miles ({(
+								activity.distance / 1000
+							).toPrecision(4)} km)</td
+						>
+					</tr>
+					<tr>
+						<th>Duration</th>
+						<td>{renderDuration(activity.moving_time)}</td>
+					</tr>
+					<tr>
+						<th>Climbing</th>
+						<td
+							>{Math.round(activity.total_elevation_gain * 3.281)}ft ({Math.round(
+								activity.total_elevation_gain
+							)}m)</td
+						>
+					</tr>
+					{#if activity.average_watts != 0}
+						<tr>
+							<th>Average Power</th>
+							<td>{activity.average_watts} watts</td>
+						</tr>
+					{/if}
+					<tr>
+						<th>Average Heartrate</th>
+						<td>{activity.average_heartrate} bmp</td>
+					</tr>
+					<tr>
+						<td class="blankEntry" />
+						<p class="stravaLink">
+							<a
+								href={'https://www.strava.com/activities/' + activity.id}
+								target="_blank"
+								rel="noreferrer">View on Strava</a
+							>
+						</p>
+					</tr>
+				</table>
 			</div>
 		</div>
 	{/each}
@@ -132,12 +157,31 @@
 		gap: 10px;
 	}
 
-	.activity-data {
-		font-family: 'ProFontWindows';
+	h3 {
+		display: flex;
+		align-items: center;
+		gap: 10px;
 	}
 
-	.activity-data > p {
-		font-size: 1.2rem;
+	th,
+	td {
+		border: 0.5px solid var(--border);
+		padding: 5px;
+		font-size: 1rem;
+		vertical-align: bottom;
+	}
+
+	th {
+		text-align: left;
+	}
+
+	.blankEntry {
+		border: none;
+	}
+
+	.stravaLink {
+		padding-top: 5px;
+		text-align: right;
 	}
 
 	@media (max-width: 578px) {
