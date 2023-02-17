@@ -82,7 +82,7 @@
 	}
 
 	@media (max-width: 578px) {
-		nav {
+		.container {
 			flex-direction: column;
 		}
 
