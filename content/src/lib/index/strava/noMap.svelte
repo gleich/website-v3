@@ -11,8 +11,4 @@
 		justify-content: center;
 		border: solid 1px var(--border);
 	}
-
-	p {
-		font-family: 'ProFontWindows';
-	}
 </style>
