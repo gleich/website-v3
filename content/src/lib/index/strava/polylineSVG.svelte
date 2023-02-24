@@ -76,4 +76,10 @@
 		height: 250px;
 		border: 0.5px solid var(--border);
 	}
+
+	@media (max-width: 400px) {
+		#map {
+			width: 100%;
+		}
+	}
 </style>

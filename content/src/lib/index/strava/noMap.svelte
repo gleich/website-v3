@@ -11,4 +11,10 @@
 		justify-content: center;
 		border: solid 1px var(--border);
 	}
+
+	@media (max-width: 400px) {
+		.container {
+			width: 100%;
+		}
+	}
 </style>
