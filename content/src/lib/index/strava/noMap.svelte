@@ -4,7 +4,7 @@
 
 <style>
 	.container {
-		width: 250px;
+		width: 350px;
 		height: 250px;
 		display: flex;
 		align-items: center;

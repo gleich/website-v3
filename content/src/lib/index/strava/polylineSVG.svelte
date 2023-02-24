@@ -72,7 +72,7 @@
 
 <style>
 	#map {
-		width: 250px;
+		width: 350px;
 		height: 250px;
 		border: 0.5px solid var(--border);
 	}
