@@ -23,7 +23,9 @@
 			antialias: true,
 			attributionControl: false,
 			zoom: 0,
-			scrollZoom: false
+			scrollZoom: false,
+			dragPan: false,
+			doubleClickZoom: false
 		}).addControl(new mapboxgl.AttributionControl({ compact: true }));
 		map.on('load', () => {
 			const data = toGeoJSON(polyline);
@@ -47,9 +49,6 @@
 			});
 			const bounds = bbox(data);
 			map?.fitBounds([bounds[0], bounds[1], bounds[2], bounds[3]], { padding: 20, duration: 0 });
-		});
-
-		map.on('idle', () => {
 			map?.resize();
 		});
 	});
@@ -75,6 +74,7 @@
 		width: 350px;
 		height: 250px;
 		border: 0.5px solid var(--border);
+		cursor: crosshair;
 	}
 
 	@media (max-width: 400px) {
