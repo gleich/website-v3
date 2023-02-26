@@ -19,8 +19,16 @@ export interface Activity {
 	pr_count: number;
 	distance: number;
 	id: number;
+	laps: Lap[];
 }
 
 export interface Map {
 	summary_polyline: string;
+}
+
+export interface Lap {
+	moving_time: number;
+	distance: number;
+	average_watts: number;
+	lap_index: number;
 }
