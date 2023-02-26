@@ -9,7 +9,6 @@
 	const maxWattage = Math.max(...data);
 	const totalWidth = 350;
 	const totalHeight = 250;
-	const ftp = 201;
 
 	let el: HTMLElement;
 
@@ -25,7 +24,6 @@
 			})
 			.style('width', () => {
 				const lap = laps[i];
-				console.log((lap.moving_time / totalMovingTime) * totalWidth);
 				i++;
 				return (lap.moving_time / totalMovingTime) * totalWidth - 2 + 'px';
 			})
