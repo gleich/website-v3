@@ -74,7 +74,6 @@
 		width: 350px;
 		height: 250px;
 		border: 0.5px solid var(--border);
-		cursor: crosshair;
 	}
 
 	@media (max-width: 400px) {
