@@ -12,6 +12,14 @@
 		height: auto;
 	}
 
+	:global(.logo > .m) {
+		fill: white;
+	}
+
+	:global(.logo > .lines) {
+		stroke: white;
+	}
+
 	main {
 		display: flex;
 		align-items: center;

@@ -6,7 +6,6 @@
 	import relativeTime from 'dayjs/plugin/relativeTime';
 	import { onMount } from 'svelte';
 	import Card from '../card.svelte';
-	import NoMap from './noMap.svelte';
 	import Graph from './graph.svelte';
 
 	dayjs.extend(duration);
