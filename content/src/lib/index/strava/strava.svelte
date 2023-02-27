@@ -76,7 +76,7 @@
 </script>
 
 <Card>
-	<h2 class="title">Recent Activities</h2>
+	<h2 class="title">Recent Workouts</h2>
 	<p>
 		Currently I am training for <a href="https://eccc-cycling.com/" target="_blank" rel="noreferrer"
 			>ECCC</a
