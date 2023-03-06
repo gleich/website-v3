@@ -5,7 +5,6 @@ use tracing_subscriber::FmtSubscriber;
 
 mod auth;
 mod strava;
-mod things;
 
 #[launch]
 async fn rocket() -> _ {
@@ -26,10 +25,6 @@ async fn rocket() -> _ {
             strava::challenge::endpoint,
             strava::cache::endpoint
         ],
-    );
-    rocket_config = rocket_config.mount(
-        "/things",
-        routes![things::cache::endpoint, things::event::endpoint],
     );
     rocket_config
 }
