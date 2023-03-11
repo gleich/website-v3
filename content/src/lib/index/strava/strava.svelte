@@ -7,6 +7,7 @@
 	import { onMount } from 'svelte';
 	import Card from '../card.svelte';
 	import Graph from './graph.svelte';
+	import NoMap from './noMap.svelte';
 
 	dayjs.extend(duration);
 	dayjs.extend(relativeTime);
@@ -88,10 +89,12 @@
 	</p>
 	{#each activities as activity, i}
 		<div class="activity">
-			{#if activity.map.summary_polyline === ''}
+			{#if activity.map.summary_polyline !== ''}
+				<PolylineSvg polyline={activity.map.summary_polyline} />
+			{:else if activity.laps !== null && activity.laps.length > 0}
 				<Graph laps={activity.laps} />
 			{:else}
-				<PolylineSvg polyline={activity.map.summary_polyline} />
+				<NoMap />
 			{/if}
 			<div class="activity-data">
 				<h3>
