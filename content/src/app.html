@@ -12,6 +12,7 @@
 		scrollbar-color: var(--border);
 		-webkit-font-smoothing: antialiased;
 		text-rendering: optimizeLegibility;
+		animation: 0.5s linear initial-page-load;
 	}
 
 	::-webkit-scrollbar {
@@ -98,6 +99,16 @@
 		font-family: 'Computer Modern';
 		font-style: italic;
 		src: url('/fonts/cmunci.ttf');
+	}
+
+	@keyframes initial-page-load {
+		from {
+			opacity: 0%;
+		}
+
+		to {
+			opacity: 100%;
+		}
 	}
 </style>
 <html lang="en">
