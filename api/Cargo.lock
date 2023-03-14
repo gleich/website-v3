@@ -66,7 +66,6 @@ dependencies = [
  "serde",
  "serde_json",
  "things3",
- "tokio",
  "tracing",
  "tracing-subscriber",
 ]
@@ -1594,9 +1593,9 @@ dependencies = [
 
 [[package]]
 name = "things3"
-version = "0.0.4"
+version = "0.0.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "50873b619e85674cf296aa07ecf111512d3e681cb6a48b9cf3c58240abddacc7"
+checksum = "2d99e647dba7d9a05c272102669de72e868263c49511a182923fe1b6320648c2"
 dependencies = [
  "anyhow",
  "chrono",
