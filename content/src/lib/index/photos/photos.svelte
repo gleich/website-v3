@@ -1,15 +1,53 @@
-<script>
+<script lang="ts">
 	import Card from '../card.svelte';
 
-	const filenames = [
-		'spider',
-		'hayden',
-		'vroom',
-		'baseball',
-		'acadia',
-		'moonlight',
-		'lights',
-		'nolan'
+	interface Photo {
+		filename: string;
+		width: number;
+		height: number;
+	}
+
+	const photos: Photo[] = [
+		{
+			filename: 'spider',
+			width: 2540,
+			height: 1693
+		},
+		{
+			filename: 'hayden',
+			width: 4096,
+			height: 2731
+		},
+		{
+			filename: 'vroom',
+			width: 2731,
+			height: 4096
+		},
+		{
+			filename: 'baseball',
+			width: 4069,
+			height: 2731
+		},
+		{
+			filename: 'acadia',
+			width: 4096,
+			height: 2731
+		},
+		{
+			filename: 'moonlight',
+			width: 2730,
+			height: 4096
+		},
+		{
+			filename: 'lights',
+			width: 4096,
+			height: 2731
+		},
+		{
+			filename: 'nolan',
+			width: 4096,
+			height: 2731
+		}
 	];
 </script>
 
@@ -21,14 +59,21 @@
 		the past few years. I mainly shoot with Nikon cameras and my current one is a Nikon Z7II.
 	</p>
 
-	{#each filenames as filename}
-		<img src={`/photos/${filename}.webp`} alt={filename} loading="lazy" />
+	{#each photos as photo}
+		<img
+			src={`/photos/${photo.filename}.webp`}
+			alt={photo.filename}
+			loading="lazy"
+			width={photo.height}
+			height={photo.width}
+		/>
 	{/each}
 </Card>
 
 <style>
 	img {
 		max-height: 90vh;
+		height: auto;
 		width: 100%;
 		object-fit: scale-down;
 		pointer-events: none;
