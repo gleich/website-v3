@@ -12,6 +12,6 @@
 		flex-direction: column;
 		gap: 10px;
 		margin: 10px 0;
-		box-shadow: 0px 0px 10px var(--border);
+		border-radius: 8px;
 	}
 </style>

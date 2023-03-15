@@ -78,11 +78,8 @@
 <Card>
 	<h2 class="title">Recent Workouts</h2>
 	<p>
-		Currently I am training for <a href="https://eccc-cycling.com/" target="_blank" rel="noreferrer"
-			>ECCC</a
-		>
-		(Eastern Collegiate Cycling Conference) road racing in the Spring of 2023. I am currently on a medium
-		volume training plan ~6-8 hrs/week. You can even see my
+		I am training for road racing in the summer of 2023. On a medium volume training plan ~6-8
+		hrs/week. You can even see my
 		<a href="https://www.trainerroad.com/app/career/mattgleich" target="_blank" rel="noreferrer"
 			>training plan</a
 		> that I have through trainerroad.
