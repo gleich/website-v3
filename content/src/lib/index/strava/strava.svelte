@@ -95,7 +95,9 @@
 			{/if}
 			<div class="activity-data">
 				<h3>
-					{activity.sport_type === 'Ride' || activity.sport_type === 'VirtualRide'
+					{activity.sport_type === 'Ride' ||
+					activity.sport_type === 'VirtualRide' ||
+					activity.sport_type === 'MountainBikeRide'
 						? 'Cycling'
 						: activity.sport_type}: {activity.name}
 				</h3>
