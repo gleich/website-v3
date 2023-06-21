@@ -12,7 +12,7 @@
 <svelte:head>
 	<Head
 		title="Matt Gleich"
-		description="first year student at RIT studying CS. cyclist, photographer, and student"
+		description="second year student at RIT studying CS. cyclist, photographer, and student"
 	/>
 </svelte:head>
 
@@ -22,7 +22,7 @@
 		<div class="cards">
 			<Card>
 				<p>
-					I'm Matt Gleich, a first year student at <a
+					I'm Matt Gleich, a second year student at <a
 						href="https://www.rit.edu/"
 						target="_blank"
 						rel="noreferrer">RIT</a
