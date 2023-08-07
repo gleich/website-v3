@@ -43,6 +43,7 @@
 
 <!-- twitter -->
 <meta property="twitter:creator" content="@matt_gleich" />
+<meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content="/open-graph-image.png" />
