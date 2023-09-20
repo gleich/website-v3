@@ -19,16 +19,6 @@
 			height: 2731
 		},
 		{
-			filename: 'vroom',
-			width: 2731,
-			height: 4096
-		},
-		{
-			filename: 'baseball',
-			width: 4069,
-			height: 2731
-		},
-		{
 			filename: 'acadia',
 			width: 4096,
 			height: 2731
@@ -39,14 +29,24 @@
 			height: 4096
 		},
 		{
-			filename: 'lights',
-			width: 4096,
-			height: 2731
+			filename: 'car',
+			width: 2705,
+			height: 4057
 		},
 		{
-			filename: 'nolan',
-			width: 4096,
-			height: 2731
+			filename: 'chris',
+			width: 2659,
+			height: 3989
+		},
+		{
+			filename: 'fox',
+			width: 2731,
+			height: 4069
+		},
+		{
+			filename: 'mtb',
+			width: 2731,
+			height: 4069
 		}
 	];
 </script>
