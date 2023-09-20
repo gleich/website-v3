@@ -78,8 +78,8 @@
 <Card>
 	<h2 class="title">Recent Workouts</h2>
 	<p>
-		I am training for road racing in the summer of 2023. On a medium volume training plan ~6-8
-		hrs/week. You can even see my
+		I am training for road racing in the spring of 2024. On a low volume training plan ~3-6
+		hrs/week. Plan on doing more volume once I settle into the school year. You can even see my
 		<a href="https://www.trainerroad.com/app/career/mattgleich" target="_blank" rel="noreferrer"
 			>training plan</a
 		> that I have through trainerroad.
