@@ -6,7 +6,7 @@ use rocket::{
     request::{Outcome, Request},
 };
 
-pub struct Token(String);
+pub struct Token(());
 
 // https://github.com/cjdenio/shorty/blob/master/src/auth.rs
 #[rocket::async_trait]
@@ -36,13 +36,13 @@ impl<'r> FromRequest<'r> for Token {
         };
 
         if !valid_tokens
-            .split(",")
+            .split(',')
             .collect::<Vec<&str>>()
             .contains(&provided_token)
         {
             return Outcome::Error((Status::Unauthorized, String::from("Invalid API token.")));
         }
 
-        Outcome::Success(Self(String::from(provided_token)))
+        Outcome::Success(Token(()))
     }
 }

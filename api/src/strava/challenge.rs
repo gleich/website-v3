@@ -22,7 +22,7 @@ pub struct Response<'r> {
 
 #[get("/?<hub>")]
 pub fn endpoint(hub: Parameters) -> Json<Option<Response>> {
-    let verify_token = env::var("STRAVA_VERIFY_TOKEN").unwrap_or(String::new());
+    let verify_token = env::var("STRAVA_VERIFY_TOKEN").unwrap_or_default();
     if hub.verify_token != verify_token {
         info!("received INVALID verify token of {}", hub.verify_token);
         return Json(None);

@@ -1,5 +1,5 @@
 use dotenv::dotenv;
-use rocket::{self, launch, routes, Config};
+use rocket::{launch, routes, Config};
 use tracing::{info, Level};
 use tracing_subscriber::FmtSubscriber;
 
