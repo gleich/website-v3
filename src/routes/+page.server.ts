@@ -20,7 +20,7 @@ export async function load({ fetch }) {
 	if (res.ok) {
 		return {
 			props: {
-				rides: data
+				rides: data['data']
 			}
 		};
 	}
