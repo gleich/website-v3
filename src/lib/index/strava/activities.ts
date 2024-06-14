@@ -19,7 +19,6 @@ export interface Activity {
 	pr_count: number;
 	distance: number;
 	id: number;
-	laps: Lap[];
 }
 
 export interface Map {

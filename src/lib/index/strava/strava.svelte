@@ -88,8 +88,6 @@
 		<div class="activity">
 			{#if activity.map.summary_polyline !== ''}
 				<PolylineSvg polyline={activity.map.summary_polyline} />
-			{:else if activity.laps !== null && activity.laps.length > 0}
-				<Graph laps={activity.laps} />
 			{:else}
 				<NoMap />
 			{/if}
