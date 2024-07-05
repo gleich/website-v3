@@ -10,7 +10,7 @@ export interface Props {
 }
 
 export async function load({ fetch }) {
-	const res = await fetch('https://api.mattglei.ch/strava/cache', {
+	const res = await fetch('https://lcp.dev.mattglei.ch/strava/cache', {
 		method: 'GET',
 		headers: {
 			Authorization: 'Bearer ' + import.meta.env.VITE_API_TOKEN
